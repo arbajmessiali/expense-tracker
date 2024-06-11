@@ -80,3 +80,8 @@ ul li button {
 ul li button:hover {
     background-color: #c82333;
 }
+
+.totals {
+    margin-top: 20px;
+    text-align: left;
+}
