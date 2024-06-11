@@ -1,6 +1,6 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f9fa;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,13 +12,14 @@ body {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 320px;
     text-align: center;
 }
 
 h1 {
     margin-bottom: 20px;
+    color: #3f51b5;
 }
 
 .form-control {
@@ -29,59 +30,76 @@ h1 {
 label {
     display: block;
     margin-bottom: 5px;
+    color: #333;
 }
 
 input {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     box-sizing: border-box;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #3f51b5;
 }
 
 button {
     width: 100%;
-    padding: 10px;
-    background-color: #28a745;
+    padding: 12px;
+    background-color: #3f51b5;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #303f9f;
 }
 
 ul {
     list-style-type: none;
     padding: 0;
+    margin-top: 20px;
 }
 
 ul li {
-    background-color: #f8f9fa;
+    background-color: #f0f2f5;
     padding: 10px;
-    border: 1px solid #ddd;
-    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-radius: 4px;
 }
 
 ul li button {
-    background-color: #dc3545;
+    background-color: #f44336;
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    padding: 5px;
+    padding: 5px 10px;
+    transition: background-color 0.3s;
 }
 
 ul li button:hover {
-    background-color: #c82333;
+    background-color: #d32f2f;
 }
 
 .totals {
     margin-top: 20px;
     text-align: left;
+}
+
+.totals h2 {
+    margin: 10px 0;
+    color: #3f51b5;
 }
