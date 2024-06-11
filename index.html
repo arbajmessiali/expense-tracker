@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Enhanced Expense Tracker</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/css/pikaday.min.css">
 </head>
 <body>
     <div class="container">
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-control">
                     <label for="expense-date">Date</label>
-                    <input type="text" id="expense-date" class="datepicker" required>
+                    <div id="expense-date" class="calendar-container"></div>
                 </div>
                 <button type="submit">Add Expense</button>
             </form>
@@ -46,11 +46,6 @@
         </div>
     </div>
     <script src="scripts.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script>
-        flatpickr(".datepicker", {
-            dateFormat: "Y-m-d",
-        });
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.8.0/pikaday.min.js"></script>
 </body>
 </html>

@@ -10,23 +10,35 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabContents = document.querySelectorAll('.tab-content');
     let expenses = [];
 
+    // Initialize Pikaday
+    let selectedDate = new Date();
+    const picker = new Pikaday({
+        field: document.getElementById('expense-date'),
+        format: 'YYYY-MM-DD',
+        onSelect: (date) => {
+            selectedDate = date;
+        }
+    });
+
     expenseForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const expenseName = document.getElementById('expense-name').value;
         const expenseAmount = parseFloat(document.getElementById('expense-amount').value);
-        const expenseDate = document.getElementById('expense-date').value;
+        // const expenseDate = document.getElementById('expense-date').value;
 
         const expense = {
             id: Date.now(),
             name: expenseName,
             amount: expenseAmount,
-            date: new Date(expenseDate)
+            date: selectedDate
         };
 
         expenses.push(expense);
         updateExpenseLists();
         updateTotals();
         expenseForm.reset();
+        // Reset the date picker
+        picker.setDate(new Date());
     });
 
     tabButtons.forEach(button => {
