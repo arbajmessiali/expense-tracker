@@ -13,13 +13,24 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 320px;
+    width: 600px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
     margin-bottom: 20px;
     color: #3f51b5;
+}
+
+.main-content {
+    display: flex;
+    justify-content: space-between;
+}
+
+form {
+    width: 50%;
 }
 
 .form-control {
@@ -63,10 +74,48 @@ button:hover {
     background-color: #303f9f;
 }
 
+.tabs {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.tab-button {
+    background-color: #f0f2f5;
+    border: none;
+    padding: 10px 20px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: left;
+    width: 100%;
+    font-size: 16px;
+}
+
+.tab-button:hover {
+    background-color: #e0e0e0;
+}
+
+.tab-button.active {
+    background-color: #3f51b5;
+    color: #fff;
+}
+
+.tab-content {
+    display: none;
+    margin-top: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
 ul {
     list-style-type: none;
     padding: 0;
-    margin-top: 20px;
+    margin: 20px 0;
 }
 
 ul li {
@@ -94,12 +143,7 @@ ul li button:hover {
     background-color: #d32f2f;
 }
 
-.totals {
-    margin-top: 20px;
-    text-align: left;
-}
-
-.totals h2 {
+h2 {
     margin: 10px 0;
     color: #3f51b5;
 }

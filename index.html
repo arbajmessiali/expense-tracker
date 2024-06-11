@@ -9,25 +9,38 @@
 <body>
     <div class="container">
         <h1>Expense Tracker</h1>
-        <form id="expense-form">
-            <div class="form-control">
-                <label for="expense-name">Expense Name</label>
-                <input type="text" id="expense-name" required>
+        <div class="main-content">
+            <form id="expense-form">
+                <div class="form-control">
+                    <label for="expense-name">Expense Name</label>
+                    <input type="text" id="expense-name" required>
+                </div>
+                <div class="form-control">
+                    <label for="expense-amount">Amount</label>
+                    <input type="number" id="expense-amount" required>
+                </div>
+                <div class="form-control">
+                    <label for="expense-date">Date</label>
+                    <input type="date" id="expense-date" required>
+                </div>
+                <button type="submit">Add Expense</button>
+            </form>
+            <div class="tabs">
+                <button class="tab-button" data-tab="daily">Daily</button>
+                <button class="tab-button" data-tab="weekly">Weekly</button>
+                <button class="tab-button" data-tab="monthly">Monthly</button>
             </div>
-            <div class="form-control">
-                <label for="expense-amount">Amount</label>
-                <input type="number" id="expense-amount" required>
-            </div>
-            <div class="form-control">
-                <label for="expense-date">Date</label>
-                <input type="date" id="expense-date" required>
-            </div>
-            <button type="submit">Add Expense</button>
-        </form>
-        <ul id="expense-list"></ul>
-        <div class="totals">
+        </div>
+        <div class="tab-content" id="daily">
+            <ul id="expense-list-daily"></ul>
             <h2>Total Daily: $<span id="total-daily">0</span></h2>
+        </div>
+        <div class="tab-content" id="weekly">
+            <ul id="expense-list-weekly"></ul>
             <h2>Total Weekly: $<span id="total-weekly">0</span></h2>
+        </div>
+        <div class="tab-content" id="monthly">
+            <ul id="expense-list-monthly"></ul>
             <h2>Total Monthly: $<span id="total-monthly">0</span></h2>
         </div>
     </div>

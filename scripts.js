@@ -1,9 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     const expenseForm = document.getElementById('expense-form');
-    const expenseList = document.getElementById('expense-list');
+    const expenseListDaily = document.getElementById('expense-list-daily');
+    const expenseListWeekly = document.getElementById('expense-list-weekly');
+    const expenseListMonthly = document.getElementById('expense-list-monthly');
     const totalDaily = document.getElementById('total-daily');
     const totalWeekly = document.getElementById('total-weekly');
     const totalMonthly = document.getElementById('total-monthly');
+    const tabButtons = document.querySelectorAll('.tab-button');
+    const tabContents = document.querySelectorAll('.tab-content');
     let expenses = [];
 
     expenseForm.addEventListener('submit', (e) => {
@@ -20,28 +24,52 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         expenses.push(expense);
-        addExpenseToList(expense);
+        updateExpenseLists();
         updateTotals();
         expenseForm.reset();
     });
 
-    expenseList.addEventListener('click', (e) => {
-        if (e.target.tagName === 'BUTTON') {
-            const expenseId = parseInt(e.target.parentElement.getAttribute('data-id'));
-            expenses = expenses.filter(expense => expense.id !== expenseId);
-            e.target.parentElement.remove();
-            updateTotals();
-        }
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            tabContents.forEach(content => content.classList.remove('active'));
+            document.getElementById(button.dataset.tab).classList.add('active');
+        });
     });
 
-    function addExpenseToList(expense) {
+    function updateExpenseLists() {
+        clearExpenseLists();
+        const now = new Date();
+
+        expenses.forEach(expense => {
+            if (isSameDay(expense.date, now)) {
+                addExpenseToList(expense, expenseListDaily);
+            }
+            if (isSameWeek(expense.date, now)) {
+                addExpenseToList(expense, expenseListWeekly);
+            }
+            if (isSameMonth(expense.date, now)) {
+                addExpenseToList(expense, expenseListMonthly);
+            }
+        });
+    }
+
+    function clearExpenseLists() {
+        expenseListDaily.innerHTML = '';
+        expenseListWeekly.innerHTML = '';
+        expenseListMonthly.innerHTML = '';
+    }
+
+    function addExpenseToList(expense, listElement) {
         const li = document.createElement('li');
         li.setAttribute('data-id', expense.id);
         li.innerHTML = `
             ${expense.name} - $${expense.amount} on ${expense.date.toLocaleDateString()}
             <button>Delete</button>
         `;
-        expenseList.appendChild(li);
+        listElement.appendChild(li);
     }
 
     function updateTotals() {
